@@ -18,7 +18,7 @@
                 <div class="col-md-12 m-auto">
                     <div class="card card-primary">
                         <div class="card-body p-3">
-                            <a href="<?= base_url() ?>/addmascotas"><button class="btn btn-xs btn-primary my-2">Agregar nuevo</button></a>
+                            <a href="<?= base_url() ?>/mascotas/addmascotas"><button class="btn btn-xs btn-primary my-2">Agregar nuevo</button></a>
                             <table class="table table-bordered table-striped table-sm">
                                 <thead>
                                     <tr>
@@ -45,8 +45,8 @@
                                         <td><?= $value['peso']; ?></td>
                                         <td><?= $value['fechaNacimiento']; ?></td>
                                         <td>
-                                            <a href="<?= base_url() ?>/medicos/editmedicos/<?= $value['codigo_mascota'] ?>"><button class="btn btn-xs btn-warning">Editar</button></a>
-                                            <a href="<?= base_url() ?>/medicos/delete/<?= $value['codigo_mascota'] ?>"><button class="btn btn-xs btn-danger">Eliminar</button></a>
+                                            <a href="<?= base_url() ?>/mascotas/editmascotas/<?= $value['codigo_mascota'] ?>"><button class="btn btn-xs btn-warning">Editar</button></a>
+                                            <a href="<?= base_url() ?>/mascotas/delete/<?= $value['codigo_mascota'] ?>"><button class="btn btn-xs btn-danger">Eliminar</button></a>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>

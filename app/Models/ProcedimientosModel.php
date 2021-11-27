@@ -49,6 +49,12 @@ class ProcedimientosModel extends Model
         $this->db->query($sql);
         return true;
     }
+    
+    public function saveMascota($codigo,$dueno,$nombre,$especie,$raza,$sexo,$peso,$fecha){
+        $sql = "CALL `add_mascota`('$codigo','$dueno','$nombre','$especie','$raza','$sexo','$peso','$fecha')";
+        $this->db->query($sql);
+        return true;
+    }
 
     public function delMedico($cmvp){
         $sql = "CALL `del_veterinario`('$cmvp')";

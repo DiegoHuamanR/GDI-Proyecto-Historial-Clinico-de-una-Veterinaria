@@ -29,33 +29,37 @@ class Mascotas extends BaseController
 		echo view('web/footer');
 	}
 
-	public function addMedicos(){
-        $arrTitulo['page'] = "medicos";
+	public function addMascotas(){
+        $arrTitulo['page'] = "mascotas";
         $arrTitulo['duenos'] = $this->procedimientos->getDuenos();
 		echo view('web/header');
 		echo view('web/aside',$arrTitulo);
-		echo view('web/medicos/addmedicos');
+		echo view('web/mascotas/addmascotas',$arrTitulo);
 		echo view('web/footer');
 	}
 
-    public function editMedicos($cmvp){
+    public function editMascotas($cmvp){
         $arrData['medico'] = $this->procedimientos->getMedico($cmvp);
-        $arrTitulo['page'] = "medicos";
+        $arrTitulo['page'] = "mascotas";
         $arrTitulo['duenos'] = $this->procedimientos->getDuenos();
 		echo view('web/header');
 		echo view('web/aside',$arrTitulo);
-		echo view('web/medicos/editmedicos',$arrData);
+		echo view('web/mascotas/editmascotas',$arrData);
 		echo view('web/footer');
 	}
 
     public function save(){
         if($this->request->getPost()){
-            $cmvp = $this->request->getPost('cmvp');
+            $codigo = $this->request->getPost('codigo');
+            $dueno = $this->request->getPost('dueno');
             $nombre = $this->request->getPost('nombre');
-            $correo = $this->request->getPost('correo');
-            $telefono = $this->request->getPost('telefono');
-            if($this->procedimientos->saveMedico($cmvp,$nombre,$correo,$telefono)){
-                return redirect()->to(base_url('/medicos'));
+            $especie = $this->request->getPost('especie');
+            $raza = $this->request->getPost('raza');
+            $sexo = $this->request->getPost('sexo');
+            $peso = $this->request->getPost('peso');
+            $fecha = $this->request->getPost('fecha');
+            if($this->procedimientos->saveMascota($codigo,$dueno,$nombre,$especie,$raza,$sexo,$peso,$fecha)){
+                return redirect()->to(base_url('/mascotas'));
             }
         }
     }
@@ -66,15 +70,15 @@ class Mascotas extends BaseController
             $nombre = $this->request->getPost('nombre');
             $correo = $this->request->getPost('correo');
             $telefono = $this->request->getPost('telefono');
-            if($this->procedimientos->updMedico($cmvp,$nombre,$correo,$telefono)){
-                return redirect()->to(base_url('/medicos'));
+            if($this->procedimientos->updMascota($cmvp,$nombre,$correo,$telefono)){
+                return redirect()->to(base_url('/mascotas'));
             }
         }
     }
 
-    public function delete($cmvp){
-        if($this->procedimientos->delMedico($cmvp)){
-            return redirect()->to(base_url('/medicos'));
+    public function delete($cod){
+        if($this->procedimientos->delMascota($cod)){
+            return redirect()->to(base_url('/mascotas'));
         }
     }
 }
